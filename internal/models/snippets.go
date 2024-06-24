@@ -3,7 +3,6 @@ package models
 import (
 	"database/sql"
 	"errors" // New import
-	"fmt"
 	"time"
 )
 
@@ -67,9 +66,9 @@ func (m *SnippetModel) Latest() ([]*Snippet, error) {
 	for rows.Next() {
 		// Create a pointer to a new zeroed Snippet struct.
 		s := &Snippet{}
-		// Use rows.Scan() to copy the values from each field in the row to the 
+		// Use rows.Scan() to copy the values from each field in the row to the
 		//  new Snippet object that we created. Again, the arguments to row.Scan()
-		//  must be pointers to the place you want to copy the data into, and the 
+		//  must be pointers to the place you want to copy the data into, and the
 		//  number of arguments must be exactly the same as the number of
 		// columns returned by your statement.
 		err = rows.Scan(&s.ID, &s.Title, &s.Content, &s.Created, &s.Expires)
