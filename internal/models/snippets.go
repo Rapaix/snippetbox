@@ -83,3 +83,12 @@ func (m *SnippetModel) Latest() ([]*Snippet, error) {
 	}
 	return snippets, nil
 }
+
+func (m *SnippetModel) DeleteById(id int) error {
+	stmt := `DELETE FROM snippets WHERE id=?`
+	_, err := m.DB.Exec(stmt, id)
+	if err != nil {
+		return err
+	}
+	return nil
+}
